@@ -1,5 +1,8 @@
 Revision history for Perl distribution Locales
 
+0.30
+    - add new add RELEASE_TESTING tests added in v0.29 to MANIFEST.in
+
 0.29 2013-09-22 11:55:58
     - more rt 80546: hide package line to fix rt 76129
     - rt 88846, update Changes format (thanks NEILB!)
