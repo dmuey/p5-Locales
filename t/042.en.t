@@ -1,7 +1,7 @@
 
 # Auto generated during CLDR build
 
-use Test::More tests => 13 + 1100;
+use Test::More tests => 13 + 1102;
 
 use lib 'lib', '../lib';
 
@@ -496,6 +496,9 @@ is( $self_obj->get_character_orientation_from_code('eo'),  $self_obj->get_charac
 
 is( $self_obj->get_locale_display_pattern_from_code('es'), $self_obj->get_locale_display_pattern_from_code_fast('es'), 'get_locale_display_pattern_from_code[_fast] same result for es' );
 is( $self_obj->get_character_orientation_from_code('es'),  $self_obj->get_character_orientation_from_code('es'),       'get_character_orientation_from_code[_fast] same result for es' );
+
+is( $self_obj->get_locale_display_pattern_from_code('es_419'), $self_obj->get_locale_display_pattern_from_code_fast('es_419'), 'get_locale_display_pattern_from_code[_fast] same result for es_419' );
+is( $self_obj->get_character_orientation_from_code('es_419'),  $self_obj->get_character_orientation_from_code('es_419'),       'get_character_orientation_from_code[_fast] same result for es_419' );
 
 is( $self_obj->get_locale_display_pattern_from_code('es_es'), $self_obj->get_locale_display_pattern_from_code_fast('es_es'), 'get_locale_display_pattern_from_code[_fast] same result for es_es' );
 is( $self_obj->get_character_orientation_from_code('es_es'),  $self_obj->get_character_orientation_from_code('es_es'),       'get_character_orientation_from_code[_fast] same result for es_es' );
