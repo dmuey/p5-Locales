@@ -35,16 +35,20 @@ sub new {
         $inc_class =~ s{(?:\:\:|\')}{/}g;    # per Module::Want::get_inc_key()
 
         if ( !exists $INC{"$inc_class/DB/Language/$tag.pm"} ) {
+
+            local $SIG{__DIE__};             # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
             eval "require $class\::DB::Language::$tag" || return;    ## no critic # Module::Want::have_mod("$class\::DB::Language::$tag");
         }
 
         if ( !exists $INC{"$inc_class/DB/Territory/$tag.pm"} ) {
-            eval "require $class\::DB::Territory::$tag" || return;    ## no critic # Module::Want::have_mod("$class\::DB::Language::$tag");
+
+            local $SIG{__DIE__};                                     # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
+            eval "require $class\::DB::Territory::$tag" || return;   ## no critic # Module::Want::have_mod("$class\::DB::Language::$tag");
         }
 
         my ( $language, $territory ) = split_tag( $locale->{'locale'} );
 
-        no strict 'refs';                                             ## no critic
+        no strict 'refs';                                            ## no critic
 
         $locale->{'language'}      = $language;
         $locale->{'language_data'} = {
@@ -89,6 +93,8 @@ sub get_native_language_from_code {
 
     my $class = ref($self) ? ref($self) : $self;
     if ( !exists $self->{'native_data'} ) {
+
+        local $SIG{__DIE__};    # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
         eval "require $class\::DB::Native;" || return;    ## no critic # Module::Want::have_mod("$class\::DB::Native");
         no strict 'refs';                                 ## no critic
         $self->{'native_data'} = {
@@ -199,6 +205,8 @@ sub get_locale_display_pattern_from_code {
 
     my $class = ref($self) ? ref($self) : $self;
     if ( !exists $self->{'locale_display_pattern_data'} ) {
+
+        local $SIG{__DIE__};                                                                 # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
         eval "require $class\::DB::LocaleDisplayPattern;" || return;                         ## no critic # Module::Want::have_mod("$class\::DB::LocaleDisplayPattern");
         no strict 'refs';                                                                    ## no critic
         $self->{'locale_display_pattern_data'} = {
@@ -248,6 +256,8 @@ sub get_character_orientation_from_code {
 
     my $class = ref($self) ? ref($self) : $self;
     if ( !exists $self->{'character_orientation_data'} ) {
+
+        local $SIG{__DIE__};                                                      # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
         eval "require $class\::DB::CharacterOrientation;" || return;              ## no critic # Module::Want::have_mod("$class\::DB::CharacterOrientation");
         no strict 'refs';                                                         ## no critic
         $self->{'character_orientation_data'} = {
@@ -889,6 +899,8 @@ sub tag_is_loadable {
     my ( $tag, $as_territory ) = @_;           # not documenting internal $as_territory, just use territory_code_is_known() directly
 
     if ( !exists $INC{"Locales/DB/Loadable.pm"} ) {
+
+        local $SIG{__DIE__};                   # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
         eval "require Locales::DB::Loadable" || return;    ## no critic # Module::Want::have_mod("Locales::DB::Loadable") || return;
     }
 
@@ -904,6 +916,8 @@ sub tag_is_loadable {
 
 sub get_loadable_language_codes {
     if ( !exists $INC{"Locales/DB/Loadable.pm"} ) {
+
+        local $SIG{__DIE__};    # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
         eval "require Locales::DB::Loadable" || return;    ## no critic # Module::Want::have_mod("Locales::DB::Loadable") || return;
     }
 
@@ -1118,6 +1132,8 @@ sub plural_rule_hashref_to_code {
                 # Does $n match $hr->{$cat} ?
 
                 if ( ref( $hr->{'category_rules_compiled'}{$cat} ) ne 'CODE' ) {
+
+                    local $SIG{__DIE__};                          # prevent benign eval from tripping potentially fatal sig handler, moot w/ Module::Want 0.6
                     $hr->{'category_rules_compiled'}{$cat} = eval "$hr->{'category_rules_compiled'}{$cat}";    ## no critic # As of 0.22 this will be skipped for modules included w/ the main dist
                 }
 
