@@ -1,4 +1,4 @@
-use Test::More tests => 423;
+use Test::More tests => 424;
 use Test::Carp;
 
 use lib 'lib', '../lib';
@@ -207,7 +207,7 @@ is( $t->get_formatted_decimal( "12.99999999999999", 14 ), '12.99999999999999', '
 is( $t->get_formatted_decimal( 12.99999999999999,   15 ), '12.99999999999999', 'small num, long dec > max- num' );
 is( $t->get_formatted_decimal( "12.99999999999999", 15 ), '12.99999999999999', 'small num, long dec > max - str' );
 
-# bug num, long dec
+# big num, long dec
 is( $t->get_formatted_decimal(10000000001.99999999999999),   '10,000,000,002',   'big num, long dec - num' );
 is( $t->get_formatted_decimal("10000000001.99999999999999"), '10,000,000,001.1', 'big num, long dec - str' );
 is( $t->get_formatted_decimal( 10000000001.99999999999999,   13 ), '10,000,000,002',                'big num, long dec < max- num' );
@@ -225,6 +225,9 @@ is( $t->get_formatted_decimal( "10000000001.99999999999999", 15 ), '10,000,000,0
     is( $ar->get_formatted_decimal(-1234567890.12345), '1٬234٬567٬890٫12345-', 'non standard format w/ neg - neg' );
     my $hy = Locales->new('hy');    # hy #0.###
     is( $hy->get_formatted_decimal(1234567890.12345), '1234567890,12345', 'non standard format only one part' );
+
+    my $de = Locales->new('de');
+    is( $de->get_formatted_decimal(1234567890.12345), '1.234.567.890,12345', 'rt 91549 - chicken and egg swap bug' );
 }
 
 is( $t->get_formatted_decimal(100_000_001),                   '100,000,001', 'integer via underscore stringified by perl OK' );

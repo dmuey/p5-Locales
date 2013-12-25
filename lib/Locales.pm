@@ -740,8 +740,9 @@ sub get_formatted_decimal {
         # END: "This is sort of where the CLDR documentation gets anemic"
     }
 
+    $result =~ s/(?<!\')\.(?!\')/_LOCALES-DECIMAL-PLACEHOLDER_/g;    # _LOCALES-DECIMAL-PLACEHOLDER_' not likley to be in CLDR format ;) - if that does not hold true then append "time . $$" to placeholder
     $result =~ s/(?<!\')\,(?!\')/$self->{language_data}{misc_info}{cldr_formats}{_decimal_format_group}/g;
-    $result =~ s/(?<!\')\.(?!\')/$self->{language_data}{misc_info}{cldr_formats}{_decimal_format_decimal}/g;
+    $result =~ s/_LOCALES-DECIMAL-PLACEHOLDER_/$self->{language_data}{misc_info}{cldr_formats}{_decimal_format_decimal}/g;
 
     # TODO ? turn 0-9 into non0-9 digits if defined as such in CLDR ?
 
