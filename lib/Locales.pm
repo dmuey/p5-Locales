@@ -60,7 +60,7 @@ sub new {
             'name_to_code' => \%{"$class\::DB::Territory::$tag\::name_to_code"},
         };
 
-        $locale->{'misc'}{'list_quote_mode'} = 'all';
+        $locale->{'misc'}{'list_quote_mode'} = 'none';
 
         $singleton_stash{$tag} = bless $locale, $class;
     }
@@ -1547,7 +1547,7 @@ Note: get_list_or() will be done once L<CLDR defines the OR-list data|http://uni
 
 To help disambiguate ambiguous arguments (none, undef, “”, all space/non-break-space) you can use $loc->{'misc'}{'list_quote_mode'}.
 
-The default value is “all”.
+The default value is “none”.
 
 Possible values:
 

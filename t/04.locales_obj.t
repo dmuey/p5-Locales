@@ -101,23 +101,25 @@ is( $t->quote_alt("foo"), '‘foo’', 'quote_alt() does alternate_quotation_' )
     is( $t->get_list_or( 1, 2, 3, 4 ), '1, 2, 3, or 4', 'get_list_and() w/ missing list_quote_mode default to none behavior' );
 }
 
-is( $t->{'misc'}{'list_quote_mode'}, 'all',    "{'misc'}{'list_quote_mode'} default to 'all'" );
-is( $t->get_list_and(),              '“”', 'get_list_and() no args, list_quote_mode=all' );
-is( $t->get_list_and( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "“a”, “”, “2”, “”, “0”, “  ”, and “\xc2\xa0”", 'get_list_and() arg types, list_quote_mode=all' );
-is( $t->get_list_and(qw({0} {1} {0} {0})), '“{0}”, “{1}”, “{0}”, and “{0}”', 'CLDR parsing handles patterns passed in as args - AND, list_quote_mode=all' );
-is( $t->get_list_or(), '“”', 'get_list_or() no args, list_quote_mode=all' );    # get_list_or() is a stub …
-is( $t->get_list_or( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "“a”, “”, “2”, “”, “0”, “  ”, or “\xc2\xa0”", 'get_list_or() arg types, list_quote_mode=all' );    # get_list_or() is a stub …
-is( $t->get_list_or(qw({0} {1} {0} {0})), '“{0}”, “{1}”, “{0}”, or “{0}”', 'CLDR parsing handles patterns passed in as args - OR, list_quote_mode=all' );
+is( $t->{'misc'}{'list_quote_mode'}, 'none', "{'misc'}{'list_quote_mode'} default to 'all'" );
+{
+    local $t->{'misc'}{'list_quote_mode'} = 'all';
 
-$t->{'misc'}{'list_quote_mode'} = 'some';
-is( $t->get_list_and(), '“”', 'get_list_and() no args, list_quote_mode=some' );
-is( $t->get_list_and( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "a, “”, 2, “”, 0, “  ”, and “\xc2\xa0”", 'get_list_and() arg types, list_quote_mode=some' );
-is( $t->get_list_and(qw({0} {1} {0} {0})), '{0}, {1}, {0}, and {0}', 'CLDR parsing handles patterns passed in as args - AND, list_quote_mode=some' );
-is( $t->get_list_or(),                     '“”',                 'get_list_or() no args, list_quote_mode=some' );                                                                         # get_list_or() is a stub …
-is( $t->get_list_or( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "a, “”, 2, “”, 0, “  ”, or “\xc2\xa0”", 'get_list_or() arg types, list_quote_mode=some' );                     # get_list_or() is a stub …
-is( $t->get_list_or(qw({0} {1} {0} {0})), '{0}, {1}, {0}, or {0}', 'CLDR parsing handles patterns passed in as args - OR, list_quote_mode=some' );
+    is( $t->get_list_and(), '“”', 'get_list_and() no args, list_quote_mode=all' );
+    is( $t->get_list_and( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "“a”, “”, “2”, “”, “0”, “  ”, and “\xc2\xa0”", 'get_list_and() arg types, list_quote_mode=all' );
+    is( $t->get_list_and(qw({0} {1} {0} {0})), '“{0}”, “{1}”, “{0}”, and “{0}”', 'CLDR parsing handles patterns passed in as args - AND, list_quote_mode=all' );
+    is( $t->get_list_or(), '“”', 'get_list_or() no args, list_quote_mode=all' );    # get_list_or() is a stub …
+    is( $t->get_list_or( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "“a”, “”, “2”, “”, “0”, “  ”, or “\xc2\xa0”", 'get_list_or() arg types, list_quote_mode=all' );    # get_list_or() is a stub …
+    is( $t->get_list_or(qw({0} {1} {0} {0})), '“{0}”, “{1}”, “{0}”, or “{0}”', 'CLDR parsing handles patterns passed in as args - OR, list_quote_mode=all' );
 
-$t->{'misc'}{'list_quote_mode'} = 'none';
+    $t->{'misc'}{'list_quote_mode'} = 'some';
+    is( $t->get_list_and(), '“”', 'get_list_and() no args, list_quote_mode=some' );
+    is( $t->get_list_and( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "a, “”, 2, “”, 0, “  ”, and “\xc2\xa0”", 'get_list_and() arg types, list_quote_mode=some' );
+    is( $t->get_list_and(qw({0} {1} {0} {0})), '{0}, {1}, {0}, and {0}', 'CLDR parsing handles patterns passed in as args - AND, list_quote_mode=some' );
+    is( $t->get_list_or(),                     '“”',                 'get_list_or() no args, list_quote_mode=some' );                                                                         # get_list_or() is a stub …
+    is( $t->get_list_or( 'a', undef, 2, "", 0, "  ", "\xc2\xa0" ), "a, “”, 2, “”, 0, “  ”, or “\xc2\xa0”", 'get_list_or() arg types, list_quote_mode=some' );                     # get_list_or() is a stub …
+    is( $t->get_list_or(qw({0} {1} {0} {0})), '{0}, {1}, {0}, or {0}', 'CLDR parsing handles patterns passed in as args - OR, list_quote_mode=some' );
+}
 
 is( $t->get_list_and(),                    undef,                    'get_list_and() no args means nothing returned' );
 is( $t->get_list_and('a'),                 'a',                      'get_list_and() 1 arg' );
