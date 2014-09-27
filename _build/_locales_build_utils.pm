@@ -820,6 +820,14 @@ sub write_native_module {
     my $code_to_name_str    = _stringify_hash_no_dumper($native_map);
     my $fallback_lookup_str = _stringify_hash_no_dumper($fallback_lookup);
 
+    # nerd alert! TODO: verify during next build
+    if ( $code_to_name_str->{'tlh'} eq 'Klingon' ) {    # i.e. no CLDR data for tlh
+
+        # "\x{f8e4}\x{f8d7}\x{f8dc}\x{f8d0}\x{f8db}"
+        # "\xef\xa3\xa4\xef\xa3\x97\xef\xa3\x9c\xef\xa3\x90\xef\xa3\x9b"
+        $code_to_name_str->{'tlh'} = "";    # need a font to see this, like Bengali
+    }
+
     _write_utf8_perl(
         "$locales_db/Native.pm", qq{package Locales::DB::Native;
 
