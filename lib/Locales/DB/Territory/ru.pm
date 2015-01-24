@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if $Locales::_UNICODE_STRINGS, 'utf8';
 
 $Locales::DB::Territory::ru::VERSION = '0.09';
 

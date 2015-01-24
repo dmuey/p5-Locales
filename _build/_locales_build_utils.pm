@@ -80,7 +80,7 @@ $Data::Dumper::Useqq    = 1;
     }
 }
 
-my $v_offset     = '0.22';
+my $v_offset     = '0.23';
 my $mod_version  = $Locales::VERSION - $v_offset;
 my $cldr_version = $Locales::cldr_version;
 my $cldr_db_path;
@@ -560,6 +560,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::Language::$tag\::VERSION = '$mod_version';
 
@@ -595,6 +596,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::Territory::$tag\::VERSION = '$mod_version';
 
@@ -835,6 +837,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::Native::VERSION = '$mod_version';
 
@@ -881,6 +884,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::Loadable::VERSION = '$mod_version';
 
@@ -913,6 +917,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::CharacterOrientation::VERSION = '$mod_version';
 
@@ -950,6 +955,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::CharacterOrientation::Tiny::VERSION = '$mod_version';
 
@@ -992,6 +998,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::LocaleDisplayPattern::VERSION = '$mod_version';
 
@@ -1034,6 +1041,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::LocaleDisplayPattern::Tiny::VERSION = '$mod_version';
 
@@ -1096,6 +1104,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if \$Locales::_UNICODE_STRINGS, 'utf8';
 
 \$Locales::DB::Docs::PluralForms::VERSION = '$mod_version';
 

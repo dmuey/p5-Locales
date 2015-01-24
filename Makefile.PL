@@ -16,6 +16,7 @@ WriteMakefile(
             'File::Slurp'         => 0,
             'ExtUtils::MakeMaker' => '6.56',
             'Module::Want'        => '0.6',
+            'String::UnicodeUTF8' => 0,
         }
       )
     : (),

@@ -1,6 +1,11 @@
 Revision history for Perl distribution Locales
 
-0.32  2012-12-28 14:51:42
+0.33  2015-01-24 14:55:28
+    - Add missing native tlh name for fun and profit
+    - Support character string environments
+        (i.e. give back Unicode strings instead of utf8 strings)
+
+0.32  2013-12-28 14:51:42
     - update BUILD_REQUIRES to match PREREQ_PM
     - bump README version
     - re-add missing Changes data

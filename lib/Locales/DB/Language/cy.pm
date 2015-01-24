@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if $Locales::_UNICODE_STRINGS, 'utf8';
 
 $Locales::DB::Language::cy::VERSION = '0.09';
 
@@ -79,7 +80,7 @@ $Locales::DB::Language::cy::cldr_version = '2.0';
             'zero' => sub {
                 if ( ( ( $_[0] == 0 ) ) ) { return 'zero'; }
                 return;
-              }
+            }
         }
     },
     'posix' => {

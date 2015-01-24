@@ -5,8 +5,18 @@ use warnings;
 
 use Module::Want 0.6;
 
-$Locales::VERSION      = '0.32';    # change in POD
+$Locales::VERSION      = '0.33';    # change in POD
 $Locales::cldr_version = '2.0';     # change in POD
+
+$Locales::_UNICODE_STRINGS = 0;
+
+sub import {
+    my ( $c, %opt ) = @_;
+    if ( exists $opt{unicode} ) {
+        $Locales::_UNICODE_STRINGS = $opt{unicode};
+    }
+    return;
+}
 
 #### class methods ####
 
@@ -1176,7 +1186,7 @@ Locales - Methods for getting localized CLDR language/territory names (and a sub
 
 =head1 VERSION
 
-This document describes Locales version 0.32
+This document describes Locales version 0.33
 
 =head1 SYNOPSIS
 
@@ -1245,6 +1255,18 @@ As described in L</Soft Locales>.
 As “soft locale” is a language-territory locale that does not fit the L</Supported Locale Criteria> directly but its super does and the territory is known.
 
 For example “es-MX” does not fit the criteria but “es” does and “MX” is a valid territory code.
+
+=head1 To byte or not to byte, that is the question. Ok, I’ll byte …
+
+The CLDR data is in bytes, specifically utf-8.
+
+By default this module simply passes along the strings as bytes, which works fine in applications that don’t operate in character mode (i.e. that use utf8 byte strings instead of Unicode strings**).
+
+If you want Unicode strings instead you can do so by bringing in the module this way:
+
+    use Locales unicode => 1;
+
+[**] What is the difference between Unicode strings and utf-8 bytes strings you ask? See L<String::UnicodeUTF8> for more info.
 
 =head1 INTERFACE
 

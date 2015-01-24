@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 # Auto generated from CLDR
+use if $Locales::_UNICODE_STRINGS, 'utf8';
 
 $Locales::DB::Language::gv::VERSION = '0.09';
 
@@ -53,7 +54,7 @@ $Locales::DB::Language::gv::cldr_version = '2.0';
             'one' => sub {
                 if ( ( ( int( $_[0] ) == $_[0] && ( ( $_[0] % 10 ) + ( $_[0] - int( $_[0] ) ) ) >= 1 && ( ( $_[0] % 10 ) + ( $_[0] - int( $_[0] ) ) ) <= 2 ) ) || ( ( ( ( $_[0] % 20 ) + ( $_[0] - int( $_[0] ) ) ) == 0 ) ) ) { return 'one'; }
                 return;
-              }
+            }
         }
     },
     'posix' => {
