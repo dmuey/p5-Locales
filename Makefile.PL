@@ -8,18 +8,14 @@ WriteMakefile(
     VERSION_FROM  => 'lib/Locales.pm',
     ABSTRACT_FROM => 'lib/Locales.pm',
     PL_FILES      => {},
-    ( $ExtUtils::MakeMaker::VERSION < 6.56 )
-    ? (
-        PREREQ_PM => {
-            'Test::More'          => 0,
-            'Test::Carp'          => 0,
-            'File::Slurp'         => 0,
-            'ExtUtils::MakeMaker' => '6.56',
-            'Module::Want'        => '0.6',
-            'String::UnicodeUTF8' => 0,
-        }
-      )
-    : (),
+    PREREQ_PM     => {
+        'Test::More'          => 0,
+        'Test::Carp'          => 0,
+        'File::Slurp'         => 0,
+        'ExtUtils::MakeMaker' => '6.56',
+        'Module::Want'        => '0.6',
+        'String::UnicodeUTF8' => 0,
+    },
     BUILD_REQUIRES => {
         'Test::More'   => 0,
         'Test::Carp'   => 0,

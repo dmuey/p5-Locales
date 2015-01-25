@@ -20,5 +20,11 @@ no_index:
   directory:
     - t
     - inc
-requires: {}
+requires:
+  ExtUtils::MakeMaker: 6.56
+  File::Slurp: 0
+  Module::Want: 0.6
+  String::UnicodeUTF8: 0
+  Test::Carp: 0
+  Test::More: 0
 version: 0.27

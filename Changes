@@ -1,5 +1,9 @@
 Revision history for Perl distribution Locales
 
+???
+    - Add v0.33 tests to the .in file
+    - simplified Makefile prereqs
+
 0.33  2015-01-24 14:55:28
     - Add missing native tlh name for fun and profit
     - Support character string environments
