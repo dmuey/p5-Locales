@@ -1013,7 +1013,7 @@ sub normalize_for_key_lookup {
 sub plural_rule_string_to_javascript_code {
     my ( $plural_rule_string, $return ) = @_;
     my $perl = plural_rule_string_to_code( $plural_rule_string, $return );
-    $perl =~ s/sub { /function (n) {/;
+    $perl =~ s/sub \{ /function (n) {/;
     $perl =~ s/\$_\[0\]/n/g;
     $perl =~ s/ \(n \% ([0-9]+)\) \+ \(n-int\(n\)\) /n % $1/g;
     $perl =~ s/int\(/parseInt\(/g;
