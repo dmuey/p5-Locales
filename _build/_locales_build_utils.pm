@@ -80,7 +80,7 @@ $Data::Dumper::Useqq    = 1;
     }
 }
 
-my $v_offset     = '0.23';
+my $v_offset     = '0.24';
 my $mod_version  = $Locales::VERSION - $v_offset;
 my $cldr_version = $Locales::cldr_version;
 my $cldr_db_path;

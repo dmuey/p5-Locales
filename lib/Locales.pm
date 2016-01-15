@@ -5,7 +5,7 @@ use warnings;
 
 use Module::Want 0.6;
 
-$Locales::VERSION      = '0.33';    # change in POD
+$Locales::VERSION      = '0.34';    # change in POD
 $Locales::cldr_version = '2.0';     # change in POD
 
 $Locales::_UNICODE_STRINGS = 0;
