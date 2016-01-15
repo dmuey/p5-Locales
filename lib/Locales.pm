@@ -1872,13 +1872,10 @@ The original, non CLDR based,  '::Base' based modules/interface in this distribu
 
 These modules were removed in version 0.15.
 
-=head1 BUGS AND LIMITATIONS
+=head1 BUGS AND FEATURES
 
-No bugs have been reported.
-
-Please report any bugs or feature requests regarding the Locales modules to
-C<bug-locales@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.
+Please report any bugs or feature requests (and a pull request for bonus points)
+ through the issue tracker at L<https://github.com/drmuey/p5-Locales/issues>.
 
 Please report any bugs or feature requests regarding CLDR data as per
 L<http://cldr.unicode.org/index/bug-reports>.
