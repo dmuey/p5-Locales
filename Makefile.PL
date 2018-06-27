@@ -25,6 +25,20 @@ WriteMakefile(
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 6.56,
     },
-    dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean => { FILES    => 'Locales-*' },
+    dist     => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean    => { FILES    => 'Locales-*' },
+    META_ADD => {
+        'meta-spec'    => { version => 2 },
+        dynamic_config => 0,
+        resources      => {
+            repository => {
+                url  => 'https://github.com/drmuey/p5-Locales.git',
+                web  => 'https://github.com/drmuey/p5-Locales',
+                type => 'git',
+            },
+            bugtracker => {
+                web => 'https://github.com/drmuey/p5-Locales/issues',
+            },
+        },
+    },
 );

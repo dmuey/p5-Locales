@@ -1,5 +1,10 @@
 Revision history for Perl distribution Locales
 
+0.35  ???
+    - Add meta-spec versions 2 stuff to aid in metacpan indexing
+       - rt 125178, thx for the report TODDR!
+    - change bug tracker to github
+
 0.34  2016-01-15 16:07:01
     - Add v0.33 tests to the .in file
     - simplified Makefile prereqs
